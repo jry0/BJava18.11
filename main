@@ -1,0 +1,76 @@
+
+
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JRadioButton;
+
+public class radioButton 
+{
+
+public static void main(String[] args)
+{
+	//creates frame
+    JFrame frame = new JFrame();
+    JPanel controlPanel = new JPanel();
+    frame.setSize(500, 300);
+    frame.setVisible(true);
+    frame.add(controlPanel);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           
+    
+    //created radio buttons object
+    JRadioButton red = new JRadioButton ("Red");
+    JRadioButton green = new JRadioButton ("Green");
+    JRadioButton blue = new JRadioButton ("Blue");
+
+    //group radio buttons
+    ButtonGroup group = new ButtonGroup();
+    {
+    	group.add(red);
+    	group.add(green);
+    	group.add(blue);
+    }
+    
+    class Listener extends JPanel implements ActionListener
+    {
+    	//check which button is clicked and use setBackground method
+        public void actionPerformed(ActionEvent e) 
+        {
+            Color color;
+            if (e.getSource() == red)
+            {
+                color = Color.red;
+                controlPanel.setBackground(color);//To set panel background
+            } 
+            else if (e.getSource() == green)
+            {
+                color = Color.green;
+                controlPanel.setBackground(color);
+            } 
+            else 
+            {
+                color = Color.blue;
+                controlPanel.setBackground(color);  
+            }
+           
+        }           
+    }
+    
+    //implemented actionlistener interface and added action listerners on buttons
+    red.addActionListener(new Listener());
+    green.addActionListener(new Listener());
+    blue.addActionListener(new Listener());
+
+    //add color
+    controlPanel.add(red); 
+    controlPanel.add(green);
+    controlPanel.add(blue);
+    
+
+}
+
+}
